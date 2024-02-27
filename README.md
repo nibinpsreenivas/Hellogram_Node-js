@@ -1,16 +1,21 @@
-# hellogram
 
-A new Flutter project.
+# Hellogram APP IN FLUTTER  
+ 
+hellogram is a fully functional social media app with multiple features built with flutter and dart.
 
-## Getting Started
+Star⭐ the repo if you like what you see😉.
+![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/assets/1.png)
+![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/assets/2.png)
+![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/assets/3.png)
+![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/assets/4.png)
+![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/assets/5.png)
+![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/assets/6.png)
+ 
+## ✨ Requirements
 
-This project is a starting point for a Flutter application.
+* Any Operating System (ie. MacOS X, Linux, Windows)
+* Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+* A little knowledge of Dart and Flutter
+* A brain to modify it
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features

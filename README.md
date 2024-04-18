@@ -22,4 +22,4 @@ Star⭐ the repo if you like what you see😉.
 
 ## App Flutter backend
 
-- https://github.com/nibinpsreenivas/Hellogram-node-js-backend/edit/main/README.md
+- https://github.com/nibinpsreenivas/Hellogram-node-js-backend/

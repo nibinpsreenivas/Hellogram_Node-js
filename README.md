@@ -1,4 +1,3 @@
-<a href="https://nibinpsreenivas.github.io/#/"><img src ="https://raw.githubusercontent.com/nibinpsreenivas/CEC-CONNECT/main/Screenshot%202023-09-11%20001338.png"></a>
 # Hellogram APP IN FLUTTER  
  
 hellogram is a fully functional social media app with multiple features built with flutter and dart.

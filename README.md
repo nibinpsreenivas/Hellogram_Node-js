@@ -16,7 +16,7 @@ Star⭐ the repo if you like what you see😉.
 * Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
 * A little knowledge of Dart and Flutter
 * A brain to modify it
-
+ 
 ## Features
 
 ## App Flutter backend

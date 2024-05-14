@@ -13,7 +13,7 @@ Star⭐ the repo if you like what you see😉.
         <th style="text-align:center">Search</th>
     </tr>
     <tr>
-        <td><img src="./screenshots/home.png" alt="" width="200"></td>
+        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
         <td><img src="./screenshots/story.png" alt="" width="200"></td>
         <td><img src="./screenshots/search-home.png" alt="" width="200"></td>
     <tr>

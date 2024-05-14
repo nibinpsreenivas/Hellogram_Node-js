@@ -14,10 +14,10 @@ Star⭐ the repo if you like what you see😉.
         <th style="text-align:center">Search</th>
     </tr>
     <tr>
-        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
-        <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
-          <td><img src="./pages/story.jpg" alt="" width="200"></td>
-         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
+        <td><img src="./pages/HomeScreen.jpg" alt="" width="220"></td>
+        <td><img src="./pages/Homescreen2.jpg" alt="" width="220"></td>
+          <td><img src="./pages/story.jpg" alt="" width="220"></td>
+         <td><img src="./pages/Search.jpg" alt="" width="220"></td>
     <tr>
 </table>
 <table border>

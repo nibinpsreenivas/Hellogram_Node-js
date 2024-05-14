@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:hellogram/domain/blocs/story/story_bloc.dart';
 import 'package:hellogram/domain/blocs/user/user_bloc.dart';
 import 'package:hellogram/ui/screens/biometrics/log.dart';
 import 'package:hellogram/ui/screens/intro/checking_login_page.dart';
+import 'package:hellogram/web_page/ui/screens/login/started_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Social Media - Fraved',
-        home: AuthenticationPage(),
+        home: kIsWeb ? StartedPageweb() : AuthenticationPage(),
       ),
     );
   }

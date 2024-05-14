@@ -18,6 +18,31 @@ class ListMessagesPage extends StatefulWidget {
 }
 
 class _ListMessagesPageState extends State<ListMessagesPage> {
+  String _decrypt(String ciphertext) {
+    // Caesar Cipher with a fixed shift value of 3
+    StringBuffer decryptedText = StringBuffer();
+
+    for (int i = 0; i < ciphertext.length; i++) {
+      int charCode = ciphertext.codeUnitAt(i);
+      // Uppercase letters
+      if (charCode >= 65 && charCode <= 90) {
+        decryptedText
+            .write(String.fromCharCode((charCode - 65 - 3 + 26) % 26 + 65));
+      }
+      // Lowercase letters
+      else if (charCode >= 97 && charCode <= 122) {
+        decryptedText
+            .write(String.fromCharCode((charCode - 97 - 3 + 26) % 26 + 97));
+      }
+      // Other characters remain unchanged
+      else {
+        decryptedText.write(ciphertext[i]);
+      }
+    }
+
+    return decryptedText.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,8 +158,8 @@ class _ListMessagesPageState extends State<ListMessagesPage> {
                                                   maxLines: 1,
                                                   overflow:
                                                       TextOverflow.visible,
-                                                  text: snapshot
-                                                      .data![i].lastMessage,
+                                                  text: _decrypt(snapshot
+                                                      .data![i].lastMessage),
                                                   fontSize: 16,
                                                   color: Colors.grey),
                                             ],
@@ -145,7 +170,7 @@ class _ListMessagesPageState extends State<ListMessagesPage> {
                                             color: hellotheme.secundary,
                                             text: timeago.format(
                                                 snapshot.data![i].updatedAt,
-                                                locale: 'es_short'),
+                                                locale: 'in_short'),
                                             fontSize: 15),
                                       ],
                                     ),

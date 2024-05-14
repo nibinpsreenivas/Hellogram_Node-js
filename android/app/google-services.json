@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "468115184605",
+    "project_id": "hellogram-final",
+    "storage_bucket": "hellogram-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468115184605:android:e52e0b2909a29c61a5b434",
+        "android_client_info": {
+          "package_name": "com.nibin.hellogram1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARx1tRuh-1FyWLMvJ-jbs052zCH3d4CGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

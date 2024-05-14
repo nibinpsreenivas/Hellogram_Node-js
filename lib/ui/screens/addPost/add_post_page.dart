@@ -78,7 +78,7 @@ class _AddPostPageState extends State<AddPostPage> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: hellotheme.primary,
         body: SafeArea(
             child: Form(
           key: _keyForm,
@@ -88,7 +88,6 @@ class _AddPostPageState extends State<AddPostPage> {
               children: [
                 _appBarPost(),
 
-                const SizedBox(height: 10.0),
                 Expanded(
                   flex: 2,
                   child: SizedBox(
@@ -100,7 +99,7 @@ class _AddPostPageState extends State<AddPostPage> {
                             Column(
                               children: [
                                 Container(
-                                  alignment: Alignment.topLeft,
+                                  //alignment: Alignment.topLeft,
                                   height: 120,
                                   width: size.width * .125,
                                   child: CircleAvatar(
@@ -113,7 +112,7 @@ class _AddPostPageState extends State<AddPostPage> {
                               ],
                             ),
                             Container(
-                              height: 55,
+                              height: 50,
                               width: size.width * .78,
                               color: Color.fromARGB(100, 255, 255, 255),
                               child: TextFormField(
@@ -132,7 +131,7 @@ class _AddPostPageState extends State<AddPostPage> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10.0),
+                        const SizedBox(height: 0.0),
                         Padding(
                           padding:
                               const EdgeInsets.only(left: 65.0, right: 10.0),
@@ -155,8 +154,7 @@ class _AddPostPageState extends State<AddPostPage> {
                                             margin: const EdgeInsets.only(
                                                 bottom: 10.0),
                                             decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 128, 0, 126),
+                                                color: hellotheme.background,
                                                 borderRadius:
                                                     BorderRadius.circular(10.0),
                                                 image: DecorationImage(
@@ -238,35 +236,40 @@ class _AddPostPageState extends State<AddPostPage> {
                       children: [
                         BlocBuilder<PostBloc, PostState>(builder: (_, state) {
                           if (state.privacyPost == 1)
-                            return const Icon(
+                            return Icon(
                               Icons.public_rounded,
-                              color: Colors.white,
+                              color: hellotheme.secundary,
                             );
 
                           if (state.privacyPost == 2)
-                            return const Icon(
+                            return Icon(
                               Icons.group_outlined,
-                              color: Colors.white,
+                              color: hellotheme.secundary,
                             );
                           if (state.privacyPost == 3)
-                            return const Icon(
+                            return Icon(
                               Icons.lock_outline_rounded,
-                              color: Colors.white,
+                              color: hellotheme.secundary,
                             );
                           return const SizedBox();
                         }),
                         const SizedBox(width: 5.0),
                         BlocBuilder<PostBloc, PostState>(builder: (_, state) {
                           if (state.privacyPost == 1)
-                            return const TextCustom(
-                                text: 'Everyone can comment', fontSize: 16);
+                            return TextCustom(
+                                color: hellotheme.secundary,
+                                text: 'Everyone can comment',
+                                fontSize: 16);
                           if (state.privacyPost == 2)
-                            return const TextCustom(
+                            return TextCustom(
+                                color: hellotheme.secundary,
                                 text: 'Only followers can comment',
                                 fontSize: 16);
                           if (state.privacyPost == 3)
-                            return const TextCustom(
-                                text: 'Nobody', fontSize: 16);
+                            return TextCustom(
+                                color: hellotheme.secundary,
+                                text: 'Nobody',
+                                fontSize: 16);
                           return const SizedBox();
                         }),
                       ],
@@ -278,8 +281,8 @@ class _AddPostPageState extends State<AddPostPage> {
                 const SizedBox(height: 5.0),
                 SingleChildScrollView(
                   child: SizedBox(
-                    height: 60,
-                    width: size.width,
+                    height: 40,
+                    width: double.infinity,
                     child: Row(
                       children: [
                         IconButton(
@@ -292,7 +295,7 @@ class _AddPostPageState extends State<AddPostPage> {
                             },
                             icon: SvgPicture.asset(
                               'assets/svg/gallery.svg',
-                              color: Colors.white,
+                              color: hellotheme.secundary,
                             )),
                         IconButton(
                             splashRadius: 20,
@@ -305,21 +308,14 @@ class _AddPostPageState extends State<AddPostPage> {
                             },
                             icon: SvgPicture.asset(
                               'assets/svg/camera.svg',
-                              color: Colors.white,
+                              color: hellotheme.secundary,
                             )),
                         IconButton(
                             splashRadius: 20,
                             onPressed: () {},
                             icon: SvgPicture.asset(
                               'assets/svg/gif.svg',
-                              color: Colors.white,
-                            )),
-                        IconButton(
-                            splashRadius: 20,
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              'assets/svg/location.svg',
-                              color: Colors.white,
+                              color: hellotheme.secundary,
                             )),
                       ],
                     ),

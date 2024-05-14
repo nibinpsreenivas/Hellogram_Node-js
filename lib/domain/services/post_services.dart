@@ -67,6 +67,17 @@ class PostServices {
     return DefaultResponse.fromJson(jsonDecode(resp.body));
   }
 
+  Future<DefaultResponse> deletePostByUser(String uidPost) async {
+    final token = await secureStorage.readToken();
+
+    final resp = await http.post(
+        Uri.parse('${Environment.urlApi}/post/delete-post-by-user'),
+        headers: {'Accept': 'application/json', 'xxx-token': token!},
+        body: {'post_uid': uidPost});
+
+    return DefaultResponse.fromJson(jsonDecode(resp.body));
+  }
+
   Future<List<ListSavedPost>> getListPostSavedByUser() async {
     final token = await secureStorage.readToken();
 

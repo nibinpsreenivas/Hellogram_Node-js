@@ -31,8 +31,8 @@ class BtnFrave extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             gradient: LinearGradient(colors: [
-              hellotheme.background1,
               hellotheme.background,
+              hellotheme.background1,
             ])),
         child: TextButton(
           style: TextButton.styleFrom(

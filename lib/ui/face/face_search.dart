@@ -9,8 +9,9 @@ class FaceRecognitionScreen extends StatelessWidget {
   File? _image;
 
   Future<void> compareFaces(BuildContext context) async {
+    print("hellooooooooooooo");
     final response = await http.post(
-      Uri.parse('http://192.168.10.219:5000/compare'),
+      Uri.parse('http://192.168.118.180:5000/compare'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -50,6 +51,7 @@ class FaceRecognitionScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 await _pickImage();
+                print("hellooooooooooooo");
                 if (_image != null) {
                   await compareFaces(context);
                 }

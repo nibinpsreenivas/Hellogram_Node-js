@@ -53,28 +53,32 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
         if (state is LoadingUserState) {
-          modalLoading(context, 'Actualizando contraseña...');
+          modalLoading(context, 'Updating password...');
         } else if (state is FailureUserState) {
           Navigator.pop(context);
           errorMessageSnack(context, state.error);
         } else if (state is SuccessUserState) {
           Navigator.pop(context);
-          modalSuccess(context, 'Contraseña cambiada!', onPressed: () {
+          modalSuccess(context, 'Password changed!', onPressed: () {
             clear();
             Navigator.pop(context);
           });
         }
       },
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: hellotheme.primary,
           appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const TextCustom(text: 'Contraseña', fontSize: 19),
+            backgroundColor: hellotheme.primary,
+            title: TextCustom(
+              text: 'Password',
+              fontSize: 19,
+              color: hellotheme.secundary,
+            ),
             elevation: 0,
             leading: IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black),
+              icon: Icon(Icons.arrow_back_ios_new_rounded,
+                  color: hellotheme.secundary),
             ),
             actions: [
               TextButton(

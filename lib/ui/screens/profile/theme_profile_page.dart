@@ -25,20 +25,42 @@ class ThemeProfilePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextCustom(text: 'Day'),
-                  Icon(Icons.radio_button_checked, color: hellotheme.background)
-                ],
+              GestureDetector(
+                onTap: () {
+                  hellotheme.primary = Color.fromARGB(255, 172, 226, 225);
+                  hellotheme.background1 = Color.fromARGB(255, 65, 201, 226);
+                  hellotheme.background = Color.fromARGB(255, 0, 141, 218);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextCustom(
+                      text: 'Sky blue',
+                      color: hellotheme.secundary,
+                    ),
+                    Icon(Icons.radio_button_checked,
+                        color: hellotheme.background)
+                  ],
+                ),
               ),
               const SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  TextCustom(text: 'Evening'),
-                  Icon(Icons.radio_button_off_rounded)
-                ],
+              GestureDetector(
+                onTap: () {
+                  hellotheme.primary = Color.fromARGB(255, 255, 192, 217);
+                  hellotheme.background1 = Color.fromARGB(255, 255, 144, 188);
+                  hellotheme.background = Color.fromARGB(255, 255, 192, 217);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextCustom(
+                      text: 'PINK',
+                      color: hellotheme.secundary,
+                    ),
+                    Icon(Icons.radio_button_checked,
+                        color: hellotheme.background)
+                  ],
+                ),
               ),
               const SizedBox(height: 20.0),
               Row(

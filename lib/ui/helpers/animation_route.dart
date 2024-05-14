@@ -18,7 +18,7 @@ Route routeSlide({required Widget page, Curve curved = Curves.easeInOut}) {
 
 Route routeFade({required Widget page, Curve curved = Curves.easeInOut}) {
   return PageRouteBuilder(
-    transitionDuration: const Duration(milliseconds: 20),
+    transitionDuration: const Duration(milliseconds: 200),
     pageBuilder: (context, animation, secondaryAnimation) => page,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       final begin = 0.0;

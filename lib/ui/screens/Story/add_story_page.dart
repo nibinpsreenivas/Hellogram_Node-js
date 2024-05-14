@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hellogram/domain/blocs/story/story_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:hellogram/ui/helpers/animation_route.dart';
 import 'package:hellogram/ui/helpers/error_message.dart';
 import 'package:hellogram/ui/helpers/modal_loading.dart';
 import 'package:hellogram/ui/helpers/modal_success.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:hellogram/ui/screens/home/home_page.dart';
 import 'package:hellogram/ui/themes/hellotheme.dart';
@@ -21,7 +23,9 @@ class AddStoryPage extends StatefulWidget {
 class _AddStoryPageState extends State<AddStoryPage> {
   late List<AssetEntity> _mediaList = [];
   late File fileImage;
-
+  Uint8List? _file;
+  final ImagePicker _picker = ImagePicker();
+  late XFile? fimage;
   @override
   void initState() {
     _assetImagesDevice();
@@ -31,6 +35,56 @@ class _AddStoryPageState extends State<AddStoryPage> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  _selectImage(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          title: const Text("Create a Post"),
+          children: [
+            SimpleDialogOption(
+              padding: const EdgeInsets.all(20),
+              child: const Text("Take a Photo"),
+              onPressed: () async {
+                Navigator.of(context).pop();
+
+                final XFile? imagePath =
+                    await _picker.pickImage(source: ImageSource.camera);
+                setState(
+                  () {
+                    fileImage = imagePath as File;
+                  },
+                );
+              },
+            ),
+            SimpleDialogOption(
+              padding: const EdgeInsets.all(20),
+              child: const Text("Choose from gallery"),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                final XFile? imagePath =
+                    await _picker.pickImage(source: ImageSource.gallery);
+                fimage = imagePath;
+                setState(
+                  () {
+                    fimage = imagePath;
+                  },
+                );
+              },
+            ),
+            SimpleDialogOption(
+              padding: const EdgeInsets.all(20),
+              child: const Text("Cancel"),
+              onPressed: () async {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   _assetImagesDevice() async {
@@ -68,7 +122,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
           Navigator.pop(context);
           modalSuccess(
             context,
-            'Story addedc !',
+            'Story added !',
             onPressed: () => Navigator.pushAndRemoveUntil(
                 context, routeSlide(page: const HomePage()), (_) => false),
           );
@@ -92,8 +146,8 @@ class _AddStoryPageState extends State<AddStoryPage> {
             BlocBuilder<StoryBloc, StoryState>(
               builder: (context, state) => TextButton(
                   onPressed: () {
-                    if (state.image != null) {
-                      storyBloc.add(OnAddNewStoryEvent(state.image!.path));
+                    if (fimage != null) {
+                      storyBloc.add(OnAddNewStoryEvent(fimage!.path));
                     }
                   },
                   child: TextCustom(
@@ -109,19 +163,25 @@ class _AddStoryPageState extends State<AddStoryPage> {
             BlocBuilder<StoryBloc, StoryState>(
                 builder: (_, state) => state.image != null
                     ? GestureDetector(
-                        onTap: () => _assetImagesDevice(),
+                        onTap: () {
+                          print("helooooooooo");
+                          return _assetImagesDevice();
+                        },
                         child: Container(
-                          height: size.height * .4,
+                          height: size.height * .5,
                           width: size.width,
                           decoration: BoxDecoration(
                               color: hellotheme.secundary,
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: FileImage(state.image!))),
+                                  image: FileImage(fimage!.path as File))),
                         ),
                       )
                     : GestureDetector(
-                        onTap: () => _assetImagesDevice(),
+                        onTap: () {
+                          print("helooooooooo");
+                          return _selectImage(context);
+                        },
                         child: Container(
                           height: size.height * .4,
                           width: size.width,

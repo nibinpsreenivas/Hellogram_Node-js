@@ -9,6 +9,7 @@ import 'package:hellogram/domain/services/post_services.dart';
 import 'package:hellogram/ui/helpers/animation_route.dart';
 import 'package:hellogram/ui/helpers/error_message.dart';
 import 'package:hellogram/ui/helpers/modal_loading_short.dart';
+import 'package:hellogram/ui/themes/hellotheme.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:hellogram/data/env/env.dart';
 import 'package:hellogram/ui/screens/comments/comments_post_page.dart';
@@ -40,16 +41,15 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: hellotheme.primary,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: const TextCustom(
-              text: 'Publicaciones', fontWeight: FontWeight.w500),
+          backgroundColor: hellotheme.primary,
+          title: const TextCustom(text: 'My Post', fontWeight: FontWeight.w500),
           elevation: 0,
           leading: IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black)),
+              icon: Icon(Icons.arrow_back_ios_new_rounded,
+                  color: hellotheme.secundary)),
         ),
         body: FutureBuilder<List<PostUser>>(
           future: postService.listPostByUser(),
@@ -75,7 +75,7 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
                         child: SizedBox(
-                          height: 350,
+                          height: 550,
                           width: size.width,
                           child: Stack(
                             children: [
@@ -86,7 +86,7 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                   options: CarouselOptions(
                                     viewportFraction: 1.0,
                                     enableInfiniteScroll: false,
-                                    height: 350,
+                                    height: 550,
                                     scrollPhysics:
                                         const BouncingScrollPhysics(),
                                     autoPlay: false,
@@ -133,7 +133,7 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                             TextCustom(
                                                 text: timeago.format(
                                                     snapshot.data![i].createdAt,
-                                                    locale: 'es'),
+                                                    locale: 'en'),
                                                 fontSize: 14,
                                                 color: Colors.white),
                                           ],
@@ -142,7 +142,33 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                     ),
                                     IconButton(
                                         splashRadius: 20,
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          showDialog(
+                                            context:
+                                                context, // The BuildContext for the dialog
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text("Options"),
+                                                content: GestureDetector(
+                                                  onTap: () => postBloc.add(
+                                                      OndelNewPostEvent(snapshot
+                                                          .data![i].postUid)),
+                                                  child:
+                                                      Text("Delete the post"),
+                                                ),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop(); // Close the dialog
+                                                    },
+                                                    child: Text("Close"),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        },
                                         icon: const Icon(
                                             Icons.more_vert_rounded,
                                             color: Colors.white))

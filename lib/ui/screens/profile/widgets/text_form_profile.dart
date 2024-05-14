@@ -30,11 +30,12 @@ class TextFormProfile extends StatelessWidget {
       readOnly: isReadOnly,
       maxLines: maxLines,
       decoration: InputDecoration(
-        enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black)),
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: hellotheme.secundary)),
         focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: hellotheme.background)),
         labelText: labelText,
+        labelStyle: TextStyle(color: hellotheme.secundary),
       ),
       validator: validator,
     );

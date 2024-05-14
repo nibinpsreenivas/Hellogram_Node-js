@@ -7,6 +7,7 @@ import 'package:hellogram/domain/models/response/response_list_stories.dart';
 import 'package:hellogram/domain/models/response/response_stories.dart';
 import 'package:hellogram/domain/services/story_services.dart';
 import 'package:hellogram/ui/screens/Story/widgets/animated_line.dart';
+import 'package:hellogram/ui/themes/hellotheme.dart';
 import 'package:hellogram/ui/widgets/widgets.dart';
 
 class ViewStoryPage extends StatefulWidget {
@@ -83,9 +84,11 @@ class _ViewStoryPageState extends State<ViewStoryPage>
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: hellotheme.primary,
       body: FutureBuilder<List<ListStory>>(
         future: storyServices.getStoryByUSer(widget.storyHome.uidStory),
         builder: (context, snapshot) {
+          final List<String> listImages = snapshot.data![0].media.split(',');
           return !snapshot.hasData
               ? const ShimmerFrave()
               : Stack(
@@ -95,6 +98,7 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                       onTapDown: (details) {
                         if (details.globalPosition.dx < size.width / 2) {
                           _previousStory();
+                          print(snapshot.data?[0].media);
                         } else {
                           _nextStory();
                         }
@@ -140,23 +144,26 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                   children: [
                                     TextCustom(
                                         text: widget.storyHome.username,
-                                        color: Colors.white),
-                                    const TextCustom(
-                                        text: 'Hace 5 horas',
-                                        color: Colors.white70,
+                                        color: hellotheme.secundary),
+                                    TextCustom(
+                                        text: 'story',
+                                        color: hellotheme.secundary,
                                         fontSize: 14)
                                   ],
                                 ),
                               ),
                               IconButton(
                                   onPressed: () => Navigator.pop(context),
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.close,
-                                    color: Colors.white,
+                                    color: hellotheme.secundary,
                                   ))
                             ],
                           ),
-
+                          Container(
+                            child: Image.network(
+                                Environment.baseUrl + listImages[0]),
+                          ),
                           const Spacer(),
                           Row(
                             children: [
@@ -172,9 +179,9 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                       decoration: InputDecoration(
                                           contentPadding:
                                               const EdgeInsets.only(left: 20.0),
-                                          hintText: 'Escribe un comentario',
+                                          hintText: 'Write a comment',
                                           hintStyle: GoogleFonts.roboto(
-                                              color: Colors.white)),
+                                              color: hellotheme.secundary)),
                                     ),
                                   ),
                                 ),
@@ -182,8 +189,8 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                               const SizedBox(width: 10.0),
                               IconButton(
                                   onPressed: () {},
-                                  icon: const Icon(Icons.send_rounded,
-                                      color: Colors.white))
+                                  icon: Icon(Icons.send_rounded,
+                                      color: hellotheme.secundary))
                             ],
                           )
                         ],

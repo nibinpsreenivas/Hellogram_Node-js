@@ -28,16 +28,16 @@ class PrivacyProgilePage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: hellotheme.secundary,
+        backgroundColor: hellotheme.primary,
         appBar: AppBar(
-          backgroundColor: hellotheme.secundary,
+          backgroundColor: hellotheme.primary,
           title: const TextCustom(
-              text: 'Privacidad', fontSize: 19, fontWeight: FontWeight.w500),
+              text: 'Privacy', fontSize: 19, fontWeight: FontWeight.w500),
           elevation: 0,
           leading: IconButton(
               onPressed: () => Navigator.pop(context),
               icon: Icon(Icons.arrow_back_ios_new_rounded,
-                  color: hellotheme.primary)),
+                  color: hellotheme.secundary)),
         ),
         body: SafeArea(
           child: ListView(

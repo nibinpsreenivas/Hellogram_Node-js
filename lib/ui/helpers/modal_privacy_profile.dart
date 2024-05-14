@@ -13,99 +13,109 @@ modalPrivacyProfile(BuildContext context) {
     shape: const RoundedRectangleBorder(
         borderRadius:
             BorderRadiusDirectional.vertical(top: Radius.circular(20.0))),
-    backgroundColor: Colors.white,
+    backgroundColor: hellotheme.primary,
     barrierColor: Colors.black26,
     builder: (context) => Container(
-      height: size.height * .41,
-      width: size.width,
-      decoration: const BoxDecoration(
-          color: Colors.white,
+      height: 400,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          color: hellotheme.primary,
           borderRadius:
               BorderRadiusDirectional.vertical(top: Radius.circular(20.0))),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                height: 5,
-                width: 38,
-                decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(50.0)),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  height: 5,
+                  width: 38,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[400],
+                      borderRadius: BorderRadius.circular(50.0)),
+                ),
               ),
-            ),
-            const SizedBox(height: 15.0),
-            Center(
-                child: BlocBuilder<UserBloc, UserState>(
-                    buildWhen: (previous, current) => previous != current,
-                    builder: (_, state) => TextCustom(
-                        text: (state.user != null && state.user!.isPrivate == 0)
-                            ? 'Cambiar cuenta a Privada'
-                            : 'Cambiar cuenta a Publica',
-                        fontWeight: FontWeight.w500))),
-            const SizedBox(height: 5.0),
-            const Divider(),
-            const SizedBox(height: 10.0),
-            Row(
-              children: const [
-                Icon(Icons.photo_outlined, size: 30, color: Colors.black),
-                SizedBox(width: 10.0),
-                TextCustom(
-                    text: 'Todo el mundo podra ver tus fotos y videos',
+              const SizedBox(height: 15.0),
+              Center(
+                  child: BlocBuilder<UserBloc, UserState>(
+                      buildWhen: (previous, current) => previous != current,
+                      builder: (_, state) => TextCustom(
+                          text:
+                              (state.user != null && state.user!.isPrivate == 0)
+                                  ? 'Change account to Private'
+                                  : 'Change account to Public',
+                          fontWeight: FontWeight.w500))),
+              const SizedBox(height: 5.0),
+              const Divider(),
+              const SizedBox(height: 10.0),
+              Row(
+                children: [
+                  Icon(Icons.photo_outlined, size: 30, color: Colors.black),
+                  SizedBox(width: 10.0),
+                  Container(
+                    width: MediaQuery.of(context).size.width - 71,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: TextCustom(
+                          text:
+                              'Everyone will be able to see your photos and videos',
+                          fontSize: 15,
+                          color: Colors.grey),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                children: const [
+                  Icon(Icons.chat_bubble_outline_rounded,
+                      size: 30, color: Colors.black),
+                  SizedBox(width: 10.0),
+                  TextCustom(
+                    text: 'This won\'t change who can tag you \nmention',
                     fontSize: 15,
-                    color: Colors.grey)
-              ],
-            ),
-            const SizedBox(height: 10.0),
-            Row(
-              children: const [
-                Icon(Icons.chat_bubble_outline_rounded,
-                    size: 30, color: Colors.black),
-                SizedBox(width: 10.0),
-                TextCustom(
-                  text: 'Esto no cambiara quien te puede etiquetar \n@mencion',
-                  fontSize: 15,
-                  color: Colors.grey,
-                  maxLines: 2,
-                )
-              ],
-            ),
-            const SizedBox(height: 10.0),
-            Row(
-              children: const [
-                Icon(Icons.person_add_alt, size: 30, color: Colors.black),
-                SizedBox(width: 10.0),
-                TextCustom(
-                  text:
-                      'Todas las solicitudes pendientes deben \n ser aprovadas a menos que las elimines',
-                  fontSize: 15,
-                  color: Colors.grey,
-                  maxLines: 2,
-                )
-              ],
-            ),
-            const SizedBox(height: 10.0),
-            const Divider(),
-            const SizedBox(height: 10.0),
-            BlocBuilder<UserBloc, UserState>(
-              buildWhen: (previous, current) => previous != current,
-              builder: (_, state) => BtnFrave(
-                text: (state.user != null && state.user!.isPrivate == 0)
-                    ? 'Cambiar a Privada'
-                    : 'Cambiar a Publica',
-                width: size.width,
-                fontSize: 17,
-                backgroundColor: hellotheme.background,
-                onPressed: () {
-                  Navigator.pop(context);
-                  userBloc.add(OnChangeAccountToPrivacy());
-                },
+                    color: Colors.grey,
+                    maxLines: 2,
+                  )
+                ],
               ),
-            )
-          ],
+              const SizedBox(height: 10.0),
+              Row(
+                children: const [
+                  Icon(Icons.person_add_alt, size: 30, color: Colors.black),
+                  SizedBox(width: 10.0),
+                  TextCustom(
+                    text:
+                        'All pending requests must \nbe approved \n unless you delete them',
+                    fontSize: 15,
+                    color: Colors.grey,
+                    maxLines: 2,
+                  )
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              const Divider(),
+              const SizedBox(height: 10.0),
+              BlocBuilder<UserBloc, UserState>(
+                buildWhen: (previous, current) => previous != current,
+                builder: (_, state) => BtnFrave(
+                  text: (state.user != null && state.user!.isPrivate == 0)
+                      ? 'Switch to Private'
+                      : 'Switch to Public',
+                  width: size.width,
+                  fontSize: 17,
+                  backgroundColor: hellotheme.background,
+                  onPressed: () {
+                    Navigator.pop(context);
+                    userBloc.add(OnChangeAccountToPrivacy());
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     ),

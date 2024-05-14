@@ -44,25 +44,25 @@ class _HomePageState extends State<HomePage> {
         }
       },
       child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: hellotheme.primary,
           appBar: AppBar(
-            backgroundColor: Colors.black,
+            backgroundColor: hellotheme.primary,
             title: Image.asset(
               "assets/img/hello.png",
-              color: Colors.white,
+              color: hellotheme.secundary,
               height: 40,
             ),
             elevation: 0,
             actions: [
               IconButton(
-                  color: Colors.white,
+                  color: hellotheme.secundary,
                   splashRadius: 20,
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(context,
                         routeSlide(page: const AddPostPage()), (_) => false);
                   },
                   icon: SvgPicture.asset('assets/svg/add_rounded.svg',
-                      color: Colors.white, height: 32)),
+                      color: hellotheme.secundary, height: 32)),
               IconButton(
                   splashRadius: 20,
                   onPressed: () => Navigator.pushAndRemoveUntil(
@@ -70,13 +70,13 @@ class _HomePageState extends State<HomePage> {
                       routeSlide(page: const NotificationsPage()),
                       (_) => false),
                   icon: SvgPicture.asset('assets/svg/notification-icon.svg',
-                      color: Colors.white, height: 26)),
+                      color: hellotheme.secundary, height: 26)),
               IconButton(
                   splashRadius: 20,
                   onPressed: () => Navigator.push(
                       context, routeSlide(page: const ListMessagesPage())),
                   icon: SvgPicture.asset('assets/svg/chat-icon.svg',
-                      color: Colors.white, height: 24)),
+                      color: hellotheme.secundary, height: 24)),
             ],
           ),
           body: SafeArea(
@@ -212,10 +212,10 @@ class _ListHistories extends StatelessWidget {
                                                   snapshot.data![i].avatar))),
                                     ),
                                   ),
-                                  const SizedBox(height: 5.0),
+                                  const SizedBox(height: 8.0),
                                   TextCustom(
                                       text: snapshot.data![i].username,
-                                      fontSize: 15)
+                                      fontSize: 8)
                                 ],
                               ),
                             ),
@@ -254,8 +254,7 @@ class _ListViewPosts extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
             BoxShadow(
-              color: Color.fromARGB(255, 128, 0, 126)
-                  .withOpacity(1), // Purple glow color
+              color: hellotheme.background.withOpacity(1), // Purple glow color
               spreadRadius: 1,
               blurRadius: 10, // Increase the blur radius for a smoother glow
               offset: const Offset(0, 0),
@@ -264,7 +263,7 @@ class _ListViewPosts extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.black, Colors.grey[900]!],
+            colors: [hellotheme.primary, Colors.grey[900]!],
           ),
         ),
         child: Stack(
@@ -312,13 +311,13 @@ class _ListViewPosts extends StatelessWidget {
                                 children: [
                                   TextCustom(
                                     text: posts.username,
-                                    color: Colors.white,
+                                    color: hellotheme.secundary,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   TextCustom(
                                     text: time,
                                     fontSize: 15,
-                                    color: Colors.white,
+                                    color: hellotheme.secundary,
                                   ),
                                 ],
                               )
@@ -326,8 +325,8 @@ class _ListViewPosts extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.more_vert_rounded,
-                                color: Colors.white, size: 25),
+                            icon: Icon(Icons.more_vert_rounded,
+                                color: hellotheme.secundary, size: 25),
                           )
                         ],
                       ),
@@ -346,7 +345,7 @@ class _ListViewPosts extends StatelessWidget {
                           child: Container(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            color: Colors.black.withOpacity(0.2),
+                            color: hellotheme.primary.withOpacity(0.2),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -363,10 +362,10 @@ class _ListViewPosts extends StatelessWidget {
                                               ? const Icon(
                                                   Icons.favorite_rounded,
                                                   color: Colors.red)
-                                              : const Icon(
+                                              : Icon(
                                                   Icons
                                                       .favorite_outline_rounded,
-                                                  color: Colors.white),
+                                                  color: hellotheme.secundary),
                                         ),
                                         const SizedBox(width: 8.0),
                                         InkWell(
@@ -374,7 +373,7 @@ class _ListViewPosts extends StatelessWidget {
                                           child: TextCustom(
                                             text: posts.countLikes.toString(),
                                             fontSize: 16,
-                                            color: Colors.white,
+                                            color: hellotheme.secundary,
                                           ),
                                         ),
                                       ],
@@ -395,7 +394,7 @@ class _ListViewPosts extends StatelessWidget {
                                           TextCustom(
                                             text: posts.countComment.toString(),
                                             fontSize: 16,
-                                            color: Colors.white,
+                                            color: hellotheme.secundary,
                                           ),
                                         ],
                                       ),
@@ -413,10 +412,9 @@ class _ListViewPosts extends StatelessWidget {
                                     IconButton(
                                       onPressed: () => postBloc
                                           .add(OnSavePostByUser(posts.postUid)),
-                                      icon: const Icon(
-                                          Icons.bookmark_border_rounded,
+                                      icon: Icon(Icons.bookmark_border_rounded,
                                           size: 27,
-                                          color: Colors.white),
+                                          color: hellotheme.secundary),
                                     ),
                                   ],
                                 ),
@@ -460,7 +458,7 @@ class _ListWithoutPosts extends StatelessWidget {
           child: SvgPicture.asset(
             svgPosts[index],
             height: 15,
-            color: Colors.black,
+            color: hellotheme.primary,
           ),
         ),
       ),

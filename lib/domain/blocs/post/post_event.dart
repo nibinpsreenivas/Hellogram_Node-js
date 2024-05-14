@@ -28,6 +28,11 @@ class OnAddNewPostEvent extends PostEvent {
   OnAddNewPostEvent(this.comment, this.post_emotion);
 }
 
+class OndelNewPostEvent extends PostEvent {
+  final String idPost;
+  OndelNewPostEvent(this.idPost);
+}
+
 class OnSavePostByUser extends PostEvent {
   final String idPost;
 

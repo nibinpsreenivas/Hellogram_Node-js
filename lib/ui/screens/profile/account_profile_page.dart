@@ -68,16 +68,20 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
         }
       },
       child: Scaffold(
-        backgroundColor: hellotheme.secundary,
+        backgroundColor: hellotheme.primary,
         appBar: AppBar(
-          backgroundColor: hellotheme.secundary,
-          title: const TextCustom(text: 'Update profile', fontSize: 19),
+          backgroundColor: hellotheme.primary,
+          title: TextCustom(
+            text: 'Update profile',
+            fontSize: 19,
+            color: hellotheme.secundary,
+          ),
           elevation: 0,
           leading: IconButton(
             highlightColor: Colors.transparent,
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                color: Colors.black),
+            icon: Icon(Icons.arrow_back_ios_new_rounded,
+                color: hellotheme.secundary),
           ),
           actions: [
             TextButton(
@@ -91,7 +95,7 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
                   }
                 },
                 child: TextCustom(
-                    text: 'Keep', color: hellotheme.primary, fontSize: 14))
+                    text: 'Keep', color: hellotheme.secundary, fontSize: 14))
           ],
         ),
         body: Form(

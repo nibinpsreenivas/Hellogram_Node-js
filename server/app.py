@@ -1,11 +1,14 @@
 import json
-import cv2
+from PIL import Image
+from keras.models import load_model
 from flask import Flask, request, jsonify
 import face_recognition
 import base64
-import numpy as np
+from keras.preprocessing.image import img_to_array
 import mysql.connector
-
+import numpy as np
+import cv2
+import numpy as np
 app = Flask(__name__)
 
 # Connect to MySQL database
@@ -16,15 +19,13 @@ db = mysql.connector.connect(
     database="face"
 )
 cursor = db.cursor()
-
-# Helper function to convert base64 encoded image to numpy array
 def base64_to_array(encoded_string):
     decoded_bytes = base64.b64decode(encoded_string)
     nparr = np.frombuffer(decoded_bytes, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     return img
-
-# Endpoint for registering user's facial image
+# Helper function to convert base64 encoded image to numpy array
+    
 @app.route('/register', methods=['POST'])
 def register_user():
     data = request.json
@@ -48,6 +49,7 @@ def register_user():
 # Endpoint for comparing facial images
 @app.route('/compare', methods=['POST'])
 def compare_faces():
+    print("helloooooo")
     data = request.json
     new_photo_base64 = data['photo']
     

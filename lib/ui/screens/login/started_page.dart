@@ -29,22 +29,17 @@ class _StartedPageState extends State<StartedPage> {
   String mood = "";
   String face = "emotion";
   void sendRequest(filename) async {
-    var request = http.MultipartRequest(
-        'POST',
-        Uri.parse(
-            "http://192.168.62.147:5000/predict")); // This is local ip of the network on which flask server is running
-    request.files.add(await http.MultipartFile.fromPath('image', filename));
-    request.fields.addAll({"face": "emotion"});
-    try {
-      var res = await request.send();
-      var body = await res.stream.bytesToString();
-      setState(() {
-        face = jsonDecode(body)['prediction'];
-      });
-      print(face);
-    } catch (e) {
-      print(e.toString());
-    }
+    final response = await http.post(
+      Uri.parse('http://192.168.236.74:5000/predict'),
+      body: {'image': base64Encode(filename)},
+    );
+    final jsonData = jsonDecode(response.body);
+    print(jsonData['emotion']);
+
+    setState(() {
+      face = jsonData['emotion'];
+    });
+    print(face);
   }
 
   bool isVisible = false;
@@ -141,8 +136,8 @@ class _StartedPageState extends State<StartedPage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       gradient: LinearGradient(colors: [
-                        hellotheme.background1,
                         hellotheme.background,
+                        hellotheme.background1,
                       ])),
                   child: TextButton(
                       style: TextButton.styleFrom(
@@ -175,8 +170,8 @@ class _StartedPageState extends State<StartedPage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       gradient: LinearGradient(colors: [
-                        hellotheme.background1,
                         hellotheme.background,
+                        hellotheme.background1,
                       ])),
                   child: TextButton(
                     child: TextCustom(
@@ -227,6 +222,8 @@ class _StartedPageState extends State<StartedPage> {
           Fluttertoast.showToast(msg: "hey good to see you happy and $face ");
           hellotheme.primary = Colors.black;
           hellotheme.secundary = Colors.white;
+          hellotheme.background = Color.fromARGB(255, 128, 0, 126);
+          hellotheme.background1 = Color.fromARGB(125, 154, 8, 152);
         });
       } else if (prob > 0.3 && prob < 0.8) {
         setState(() {
@@ -235,6 +232,8 @@ class _StartedPageState extends State<StartedPage> {
           Fluttertoast.showToast(msg: "hey good to see you normal and $face");
           hellotheme.primary = Colors.black;
           hellotheme.secundary = Colors.white;
+          hellotheme.background = Color.fromARGB(255, 128, 0, 126);
+          hellotheme.background1 = Color.fromARGB(125, 154, 8, 152);
         });
       } else if (prob > 0.06152385 && prob < 0.3) {
         setState(() {
@@ -243,6 +242,8 @@ class _StartedPageState extends State<StartedPage> {
           Fluttertoast.showToast(msg: "Hey why are you Sad and $face");
           hellotheme.primary = Colors.white;
           hellotheme.secundary = Colors.black;
+          hellotheme.background = Color.fromARGB(255, 128, 0, 126);
+          hellotheme.background1 = Color.fromARGB(125, 154, 8, 152);
         });
       } else {
         setState(() {
@@ -251,6 +252,8 @@ class _StartedPageState extends State<StartedPage> {
           Fluttertoast.showToast(msg: "Hey why are you Angry and $face");
           hellotheme.primary = Colors.white;
           hellotheme.secundary = Colors.black;
+          hellotheme.background = Color.fromARGB(255, 128, 0, 126);
+          hellotheme.background1 = Color.fromARGB(125, 154, 8, 152);
         });
       }
       setState(() {

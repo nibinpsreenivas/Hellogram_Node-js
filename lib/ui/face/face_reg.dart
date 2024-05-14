@@ -19,7 +19,7 @@ class FaceRegistrationScreen extends StatelessWidget {
 
   Future<void> registerUser(BuildContext context) async {
     final response = await http.post(
-      Uri.parse('http://192.168.10.219:5000/register'),
+      Uri.parse('http://192.168.118.180:5000/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -35,7 +35,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Future<void> compareFaces(BuildContext context) async {
     final response = await http.post(
-      Uri.parse('http://192.168.10.219:5000/compare'),
+      Uri.parse('http://192.168.136.74:5000/compare'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

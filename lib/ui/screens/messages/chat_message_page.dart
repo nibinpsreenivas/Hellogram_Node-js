@@ -18,12 +18,12 @@ class ChatMessagesPage extends StatefulWidget {
   final String usernameTarget;
   final String avatarTarget;
 
-  const ChatMessagesPage(
-      {Key? key,
-      required this.uidUserTarget,
-      required this.usernameTarget,
-      required this.avatarTarget})
-      : super(key: key);
+  const ChatMessagesPage({
+    Key? key,
+    required this.uidUserTarget,
+    required this.usernameTarget,
+    required this.avatarTarget,
+  }) : super(key: key);
 
   @override
   State<ChatMessagesPage> createState() => _ChatMessagesPageState();
@@ -34,7 +34,6 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
   late ChatBloc chatBloc;
   late TextEditingController _messageController;
   final _focusNode = FocusNode();
-
   List<ChatMessage> chatMessage = [];
 
   @override
@@ -66,40 +65,116 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
     final List<ListMessage> list =
         await chatServices.listMessagesByUser(widget.uidUserTarget);
 
-    final history = list.map((m) => ChatMessage(
+    final history = list.map((m) {
+      final decryptedMessage = _decrypt(m.message);
+      return ChatMessage(
         uidUser: m.sourceUid,
-        message: m.message,
+        message: decryptedMessage,
         time: m.createdAt,
         animationController: AnimationController(
-            vsync: this, duration: const Duration(milliseconds: 350))
-          ..forward()));
+          vsync: this,
+          duration: const Duration(milliseconds: 350),
+        )..forward(),
+      );
+    }).toList();
 
     setState(() => chatMessage.insertAll(0, history));
   }
 
-  _handleSubmit(String text) {
+  _handleSubmit(String text, response) async {
     _messageController.clear();
     _focusNode.requestFocus();
     final userBloc = BlocProvider.of<UserBloc>(context).state;
 
     if (userBloc.user != null) {
-      final chat = ChatMessage(
+      final encryptedMessage = _encrypt(text);
+
+      final userMessage = ChatMessage(
         uidUser: userBloc.user!.uid,
         message: text,
         animationController: AnimationController(
-            vsync: this, duration: const Duration(milliseconds: 350)),
+          vsync: this,
+          duration: const Duration(milliseconds: 350),
+        ),
       );
 
-      chatMessage.insert(0, chat);
-      chat.animationController.forward();
+      chatMessage.insert(0, userMessage);
+      userMessage.animationController.forward();
 
       setState(() {});
 
       chatBloc.add(
-          OnEmitMessageEvent(userBloc.user!.uid, widget.uidUserTarget, text));
+        OnEmitMessageEvent(
+          userBloc.user!.uid,
+          widget.uidUserTarget,
+          encryptedMessage,
+        ),
+      );
 
-      chatBloc.add(OnIsWrittingEvent(false));
+      // Send the user's prompt to the AI model
+
+      // Get the response from the AI model
+
+      final aiMessage = ChatMessage(
+        uidUser: 'AI',
+        message: response,
+        animationController: AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 350),
+        ),
+      );
+
+      chatMessage.insert(0, aiMessage);
+      aiMessage.animationController.forward();
     }
+  }
+
+  String _encrypt(String plaintext) {
+    // Caesar Cipher with a fixed shift value of 3
+    StringBuffer encryptedText = StringBuffer();
+
+    for (int i = 0; i < plaintext.length; i++) {
+      int charCode = plaintext.codeUnitAt(i);
+      // Uppercase letters
+      if (charCode >= 65 && charCode <= 90) {
+        encryptedText.write(String.fromCharCode((charCode - 65 + 3) % 26 + 65));
+      }
+      // Lowercase letters
+      else if (charCode >= 97 && charCode <= 122) {
+        encryptedText.write(String.fromCharCode((charCode - 97 + 3) % 26 + 97));
+      }
+      // Other characters remain unchanged
+      else {
+        encryptedText.write(plaintext[i]);
+      }
+    }
+
+    return encryptedText.toString();
+  }
+
+  String _decrypt(String ciphertext) {
+    // Caesar Cipher with a fixed shift value of 3
+    StringBuffer decryptedText = StringBuffer();
+
+    for (int i = 0; i < ciphertext.length; i++) {
+      int charCode = ciphertext.codeUnitAt(i);
+      // Uppercase letters
+      if (charCode >= 65 && charCode <= 90) {
+        decryptedText
+            .write(String.fromCharCode((charCode - 65 - 3 + 26) % 26 + 65));
+      }
+      // Lowercase letters
+      else if (charCode >= 97 && charCode <= 122) {
+        decryptedText
+            .write(String.fromCharCode((charCode - 97 - 3 + 26) % 26 + 97));
+      }
+      // Other characters remain unchanged
+      else {
+        decryptedText.write(ciphertext[i]);
+      }
+    }
+
+    return decryptedText.toString();
   }
 
   @override
@@ -114,54 +189,44 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextCustom(
-                    color: hellotheme.secundary,
-                    text: widget.usernameTarget,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 21),
+                  text: widget.usernameTarget,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 21,
+                ),
               ],
             ),
           ],
         ),
         elevation: 0,
         leading: IconButton(
-            splashRadius: 20,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,
-                color: hellotheme.secundary)),
+          splashRadius: 20,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: hellotheme.primary,
+          ),
+        ),
         actions: [
           CircleAvatar(
-            backgroundImage:
-                NetworkImage(Environment.baseUrl + widget.avatarTarget),
+            backgroundImage: NetworkImage(
+              Environment.baseUrl + widget.avatarTarget,
+            ),
           ),
           const SizedBox(width: 10.0)
         ],
       ),
       body: Column(
         children: [
-          Flexible(child: BlocBuilder<ChatBloc, ChatState>(
-            builder: (_, state) {
-              if (state.message != null) {
-                final chatListen = ChatMessage(
-                  uidUser: state.uidSource!,
-                  message: state.message!,
-                  animationController: AnimationController(
-                      vsync: this, duration: const Duration(milliseconds: 350)),
-                );
-
-                chatMessage.insert(0, chatListen);
-                chatListen.animationController.forward();
-              }
-
-              return ListView.builder(
-                reverse: true,
-                itemCount: chatMessage.length,
-                itemBuilder: (_, i) => chatMessage[i],
-              );
-            },
-          )),
-          _textMessage()
+          Flexible(
+            child: ListView.builder(
+              reverse: true,
+              itemCount: chatMessage.length,
+              itemBuilder: (_, index) => chatMessage[index],
+            ),
+          ),
+          _textMessage(),
         ],
       ),
     );
@@ -221,11 +286,11 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
                 }
               },
               onPressed: state.isWritting
-                  ? () => _handleSubmit(_messageController.text.trim())
+                  ? () => _handleSubmit(_messageController.text.trim(), null)
                   : null,
-              child: const TextCustom(
+              child: TextCustom(
                 text: 'Send',
-                color: Color.fromARGB(255, 128, 0, 126),
+                color: hellotheme.background,
               ),
             ),
           ),

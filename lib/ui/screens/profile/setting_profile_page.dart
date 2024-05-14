@@ -70,7 +70,7 @@ class SettingProfilePage extends StatelessWidget {
                 icon: Icons.info_outline_rounded,
                 onPressed: () {}),
             ItemProfile(
-                text: 'Topics',
+                text: 'Themes',
                 icon: Icons.palette_outlined,
                 onPressed: () => Navigator.push(
                     context, routeSlide(page: const ThemeProfilePage()))),

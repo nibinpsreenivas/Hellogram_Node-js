@@ -18,7 +18,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   void initSocketChat() async {
     final token = await secureStorage.readToken();
-    _socket = IO.io('http://192.168.10.219:7070/socket-chat-message', {
+    _socket = IO.io('http://192.168.136.74:7070/socket-chat-message', {
       'transports': ['websocket'],
       'autoConnect': true,
       'forceNew': true,

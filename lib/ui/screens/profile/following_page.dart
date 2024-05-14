@@ -37,8 +37,12 @@ class _FollowingPageState extends State<FollowingPage> {
         backgroundColor: hellotheme.primary,
         appBar: AppBar(
           backgroundColor: hellotheme.primary,
-          title: const TextCustom(
-              text: 'Friends', letterSpacing: .8, fontSize: 19),
+          title: TextCustom(
+            text: 'Friends',
+            letterSpacing: .8,
+            fontSize: 19,
+            color: hellotheme.secundary,
+          ),
           elevation: 0,
           leading: IconButton(
               splashRadius: 20,
@@ -86,7 +90,7 @@ class _ListFollowings extends StatelessWidget {
         itemBuilder: (context, i) {
           return InkWell(
             borderRadius: BorderRadius.circular(10.0),
-            splashColor: Colors.grey[300],
+            splashColor: hellotheme.secundary,
             onTap: () => Navigator.push(
                 context,
                 routeSlide(
@@ -138,7 +142,7 @@ class _ListFollowings extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               horizontal: 17.0, vertical: 6.0),
                           child: TextCustom(
-                              color: hellotheme.secundary,
+                              color: hellotheme.primary,
                               text: 'Following',
                               fontSize: 16),
                         )),

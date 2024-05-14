@@ -9,12 +9,13 @@ Star⭐ the repo if you like what you see😉.
 <table border>
     <tr>
         <th style="text-align:center">Home</th>
+      <th style="text-align:center">Emotion Home</th>
         <th style="text-align:center">Story</th>
         <th style="text-align:center">Search</th>
     </tr>
     <tr>
         <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
-        <td><img src="./screenshots/story.png" alt="" width="200"></td>
+        <td><img src="./pages/HomeScreen2.jpg" alt="" width="200"></td>
         <td><img src="./screenshots/search-home.png" alt="" width="200"></td>
     <tr>
 </table>

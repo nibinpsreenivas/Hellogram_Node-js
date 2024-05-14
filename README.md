@@ -22,16 +22,16 @@ Star⭐ the repo if you like what you see😉.
 </table>
 <table border>
     <tr>
-        <th style="text-align:center">Home</th>
-      <th style="text-align:center">Emotion Home</th>
-        <th style="text-align:center">Story</th>
-        <th style="text-align:center">Search</th>
+        <th style="text-align:center">Landing page</th>
+      <th style="text-align:center">login page</th>
+        <th style="text-align:center">Photo Register</th>
+        <th style="text-align:center">Register page</th>
     </tr>
     <tr>
-        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
-        <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
-          <td><img src="./pages/story.jpg" alt="" width="200"></td>
-         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
+        <td><img src="./pages/Loginblack.jpg" alt="" width="200"></td>
+        <td><img src="./pages/Login2black.jpg" alt="" width="200"></td>
+          <td><img src="./pages/Registerblack.jpg" alt="" width="200"></td>
+         <td><img src="./pages/Registerrr.jpg" alt="" width="200"></td>
     <tr>
 </table>
 

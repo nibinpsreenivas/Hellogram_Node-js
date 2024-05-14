@@ -20,6 +20,7 @@ Star⭐ the repo if you like what you see😉.
          <td><img src="./pages/Search.jpg" alt="" width="220"></td>
     <tr>
 </table>
+
 <table border>
     <tr>
         <th style="text-align:center">Landing page</th>
@@ -52,16 +53,16 @@ Star⭐ the repo if you like what you see😉.
 
 <table border>
     <tr>
-        <th style="text-align:center">Home</th>
-      <th style="text-align:center">Emotion Home</th>
-        <th style="text-align:center">Story</th>
-        <th style="text-align:center">Search</th>
+        <th style="text-align:center">QRcode</th>
+      <th style="text-align:center">Chat List</th>
+        <th style="text-align:center">Chat</th>
+        <th style="text-align:center">Post</th>
     </tr>
     <tr>
-        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
-        <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
-          <td><img src="./pages/story.jpg" alt="" width="200"></td>
-         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
+        <td><img src="./pages/QRcode.jpg" alt="" width="200"></td>
+        <td><img src="./pages/Messages1.jpg" alt="" width="200"></td>
+          <td><img src="./pages/Message2.jpg" alt="" width="200"></td>
+         <td><img src="./pages/Post.jpg" alt="" width="200"></td>
     <tr>
 </table>
 

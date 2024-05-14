@@ -16,6 +16,7 @@ Star⭐ the repo if you like what you see😉.
     <tr>
         <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
         <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
+          <td><img src="./pages/story.jpg" alt="" width="200"></td>
         <td><img src="./screenshots/search-home.png" alt="" width="200"></td>
     <tr>
 </table>

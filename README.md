@@ -17,22 +17,56 @@ Star⭐ the repo if you like what you see😉.
         <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
         <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
           <td><img src="./pages/story.jpg" alt="" width="200"></td>
-        <td><img src="./screenshots/search-home.png" alt="" width="200"></td>
+         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
+    <tr>
+</table>
+<table border>
+    <tr>
+        <th style="text-align:center">Home</th>
+      <th style="text-align:center">Emotion Home</th>
+        <th style="text-align:center">Story</th>
+        <th style="text-align:center">Search</th>
+    </tr>
+    <tr>
+        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
+        <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
+          <td><img src="./pages/story.jpg" alt="" width="200"></td>
+         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
     <tr>
 </table>
 
 <table border>
     <tr>
-        <th style="text-align:center">Search | view Photo</th>
-        <th style="text-align:center">Search User</th>
-        <th style="text-align:center">Profile another user</th>
+        <th style="text-align:center">Home</th>
+      <th style="text-align:center">Emotion Home</th>
+        <th style="text-align:center">Story</th>
+        <th style="text-align:center">Search</th>
     </tr>
     <tr>
-        <td><img src="./screenshots/search-view-photo.png" alt="" width="200"></td>
-        <td><img src="./screenshots/search-user.png" alt="" width="200"></td>
-        <td><img src="./screenshots/account-another-user.png" alt="" width="200"></td>
+        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
+        <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
+          <td><img src="./pages/story.jpg" alt="" width="200"></td>
+         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
     <tr>
 </table>
+
+<table border>
+    <tr>
+        <th style="text-align:center">Home</th>
+      <th style="text-align:center">Emotion Home</th>
+        <th style="text-align:center">Story</th>
+        <th style="text-align:center">Search</th>
+    </tr>
+    <tr>
+        <td><img src="./pages/HomeScreen.jpg" alt="" width="200"></td>
+        <td><img src="./pages/Homescreen2.jpg" alt="" width="200"></td>
+          <td><img src="./pages/story.jpg" alt="" width="200"></td>
+         <td><img src="./pages/Search.jpg" alt="" width="200"></td>
+    <tr>
+</table>
+
+
+
  
 ## ✨ Requirements
 

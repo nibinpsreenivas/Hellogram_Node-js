@@ -65,6 +65,7 @@ Star⭐ the repo if you like what you see😉.
          <td><img src="./pages/Post.jpg" alt="" width="200"></td>
     <tr>
 </table>
+
 ## Features Includes:  
 
 1. ### Photo-based Search
@@ -93,7 +94,7 @@ Star⭐ the repo if you like what you see😉.
 * A little knowledge of Dart and Flutter
 * A brain to modify it
  
-## Features
+
 
 ## App Flutter backend
 

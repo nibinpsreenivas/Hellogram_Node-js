@@ -267,7 +267,7 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
                 if (_messageController.text.isNotEmpty) {
                   String _generatedResponse = '';
 
-                  final apiKey = "AIzaSyDBWacb8lYJ1a_7oRsLAK2qaExKcT_VgY8";
+                  final apiKey = "Enter your key";
 
                   final model =
                       GenerativeModel(model: 'gemini-pro', apiKey: apiKey);

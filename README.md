@@ -1,4 +1,4 @@
-# Hellogram APP IN FLUTTER  
+ # Hellogram APP IN FLUTTER  
  
 hellogram is a fully functional social media app with multiple features built with flutter and dart.
 
@@ -96,6 +96,6 @@ Star⭐ the repo if you like what you see😉.
  
 
 
-## App Flutter backend
+## App Flutter backend 
 
 - https://github.com/nibinpsreenivas/Hellogram-node-js-backend/

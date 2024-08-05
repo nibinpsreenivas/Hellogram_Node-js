@@ -20,7 +20,7 @@ Star⭐ the repo if you like what you see😉.
          <td><img src="./pages/Search.jpg" alt="" width="220"></td>
     <tr>
 </table>
-
+ 
 <table border>
     <tr>
         <th style="text-align:center">Landing page</th>

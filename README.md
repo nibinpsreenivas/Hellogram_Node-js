@@ -5,7 +5,7 @@ hellogram is a fully functional social media app with multiple features built wi
 Star⭐ the repo if you like what you see😉.
 ![bmi (820 x 360 px)](https://raw.githubusercontent.com/nibinpsreenivas/Hellogram_Node-js/main/Add%20a%20subheading.gif)
 ## Screenshots
-    
+     
 <table border>
     <tr>
         <th style="text-align:center">Home</th>
